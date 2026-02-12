@@ -1,6 +1,7 @@
 import { AppBar, Toolbar, Container, Box } from '@mui/material';
 import Button from './atoms/Button';
 import logoAlltix from '../assets/logoAlltix.svg';
+import { LogIn } from 'lucide-react';
 
 export default function Navbar() {
   return (
@@ -36,15 +37,7 @@ export default function Navbar() {
           <Box sx={{ display: 'flex', gap: 1 }}>
           <Button
             variant="secondary"
-            size="small"
-            href="https://app.alltix.co/auth"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Contact Us
-          </Button>
-          <Button
-            variant="primary"
+            startIcon={<LogIn />}
             size="small"
             href="https://app.alltix.co/auth"
             target="_blank"

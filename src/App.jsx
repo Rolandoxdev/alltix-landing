@@ -12,14 +12,14 @@ import ButtonShowcase from '../src/components/ButtonShowcase';
 function App() {
   return (
     <>
-    {/* <ButtonShowcase /> */}
+      {/* <ButtonShowcase /> */}
       <Navbar />
       <Hero />
       <Problem />
       <Solution />
       <Features />
       <Audience />
-      <EarlyAccess />
+      {/* <EarlyAccess /> */}
       <CTA />
       <Footer />
     </>

@@ -1,105 +1,263 @@
-import { Container, Box, Typography, Grid, Card, CardContent } from '@mui/material';
-import EventSeatIcon from '@mui/icons-material/EventSeat';
-import GroupsIcon from '@mui/icons-material/Groups';
-import StadiumIcon from '@mui/icons-material/Stadium';
-import TuneIcon from '@mui/icons-material/Tune';
-import SpeedIcon from '@mui/icons-material/Speed';
+import { Container, Box, Typography, Card, CardContent, Chip } from '@mui/material';
+import { MapPin, Ticket, QrCode, Bell, Smartphone } from 'lucide-react';
+import appScreen from '../assets/alltixAppScreen.png';
 
-const features = [
+const leftFeatures = [
   {
-    icon: EventSeatIcon,
-    title: 'Seat Selection Like a Cinema',
-    description: 'Give your attendees an intuitive, visual seat selection experience. They can see exactly what\'s available and choose their perfect seats.'
+    icon: MapPin,
+    iconColor: '#059669', 
+    iconBg: '#D1FAE5',
+    title: 'Interactive seat selection',
+    description: 'High fidelity, interactive maps allow buyers to see exactly what their view will look like before they buy. '
   },
   {
-    icon: GroupsIcon,
+    icon: Ticket,
+    iconColor: '#059669', 
+    iconBg: '#D1FAE5',
+    title: 'Built for Scalability',
+    description: 'Infrastructure designed to handle the demands of high-traffic, large-scale events without a hitch.'
+  }
+];
+
+const rightFeatures = [
+  {
+    icon: QrCode,
+    iconColor: '#059669',
+    iconBg: '#D1FAE5',
     title: 'Group & Affinity Seating',
-    description: 'Easily manage group bookings, reserved sections, and affinity seating for sponsors, VIPs, or special communities.'
+    description: 'Friends, families, or communities can easily sit together.'
   },
   {
-    icon: StadiumIcon,
-    title: 'Built for Large Events',
-    description: 'Handle events from 2,000 to 50,000+ attendees without breaking a sweat. Our platform scales with your ambitions.'
-  },
-  {
-    icon: TuneIcon,
+    icon: Bell,
+    iconColor: '#059669',
+    iconBg: '#D1FAE5',
     title: 'Organizer Control',
-    description: 'Full control over pricing, sections, availability, and restrictions. Configure your event exactly the way you need it.'
-  },
-  {
-    icon: SpeedIcon,
-    title: 'Fast & Intuitive Experience',
-    description: 'Modern, responsive interface that works seamlessly on any device. Your attendees will appreciate the smooth experience.'
+    description: 'Manage sections, pricing, availability, and event structure from one place.'
   }
 ];
 
 export default function Features() {
   return (
-    <Box id="features" sx={{ py: 10, backgroundColor: '#F5F5F5' }}>
+    <Box id="features" sx={{ py: { xs: 8, md: 12 }, backgroundColor: '#FFFFFF' }}>
       <Container maxWidth="lg">
-        <Box sx={{ textAlign: 'center', mb: 6 }}>
+        {/* Header Section */}
+        <Box sx={{ textAlign: 'center', mb: 8 }}>
+          <Chip 
+            icon={
+              <Smartphone 
+                size={16} 
+                style={{ color: '#3B82F6' }} 
+              />
+            }
+            label="POWERFUL FEATURES"
+            sx={{
+              backgroundColor: '#DBEAFE',
+              color: '#3B82F6',
+              fontWeight: 600,
+              fontSize: '0.75rem',
+              letterSpacing: '0.05em',
+              height: '28px',
+              mb: 3,
+              border: 'none',
+              '& .MuiChip-label': {
+                px: 1.5
+              },
+              '& .MuiChip-icon': {
+                ml: 1.5
+              }
+            }}
+          />
+          
           <Typography 
-            variant="h3" 
+            variant="h2" 
             component="h2" 
-            gutterBottom
-            sx={{ fontWeight: 700, mb: 2 }}
+            sx={{ 
+              fontWeight: 800, 
+              mb: 2,
+              fontSize: { xs: '2rem', md: '2.5rem' }
+            }}
           >
-            Features that make a difference
+            Smart Features for Effortless Event Ticketing
           </Typography>
+          
           <Typography 
-            variant="h6" 
+            variant="body1" 
             color="text.secondary"
-            sx={{ maxWidth: '700px', mx: 'auto' }}
+            sx={{ 
+              maxWidth: '700px', 
+              mx: 'auto',
+              fontSize: '1.05rem',
+              lineHeight: 1.7
+            }}
           >
-            Everything you need to run successful seat-based events
+            Everything you need to manage elite-tier events logistics.
           </Typography>
         </Box>
 
-        <Grid container spacing={4}>
-          {features.map((feature, index) => {
-            const Icon = feature.icon;
-            return (
-              <Grid item xs={12} sm={6} md={4} key={index}>
+        {/* Three Column Layout */}
+        <Box 
+          sx={{ 
+            display: 'flex',
+            flexDirection: { xs: 'column', md: 'row' },
+            gap: 4,
+            alignItems: 'center'
+          }}
+        >
+          {/* Left Column - 2 Cards */}
+          <Box 
+            sx={{ 
+              flex: 1,
+              display: 'flex',
+              flexDirection: 'column',
+              gap: 3
+            }}
+          >
+            {leftFeatures.map((feature, index) => {
+              const Icon = feature.icon;
+              return (
                 <Card 
-                  elevation={3}
+                  key={index}
+                  elevation={0}
                   sx={{ 
-                    height: '100%',
-                    transition: 'transform 0.2s, box-shadow 0.2s',
+                    backgroundColor: '#FAFAFA',
+                    border: '1px solid #E5E7EB',
+                    borderRadius: 4,
+                    transition: 'all 0.3s',
                     '&:hover': {
                       transform: 'translateY(-4px)',
-                      boxShadow: 6
+                      boxShadow: '0 10px 30px rgba(0,0,0,0.08)',
+                      borderColor: '#D1D5DB'
                     }
                   }}
                 >
-                  <CardContent sx={{ p: 4 }}>
-                    <Icon 
-                      sx={{ 
-                        fontSize: 56, 
-                        color: 'primary.main', 
-                        mb: 2 
-                      }} 
-                    />
+                  <CardContent sx={{ p: 3 }}>
+                    <Box
+                      sx={{
+                        width: 56,
+                        height: 56,
+                        borderRadius: '50%',
+                        backgroundColor: feature.iconBg,
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        mb: 2
+                      }}
+                    >
+                      <Icon size={28} style={{ color: feature.iconColor }} />
+                    </Box>
+                    
                     <Typography 
-                      variant="h5" 
+                      variant="h6" 
                       component="h3" 
-                      gutterBottom
-                      sx={{ fontWeight: 600, mb: 2 }}
+                      sx={{ fontWeight: 600, mb: 1 }}
                     >
                       {feature.title}
                     </Typography>
+                    
                     <Typography 
-                      variant="body1" 
+                      variant="body2" 
                       color="text.secondary"
-                      sx={{ lineHeight: 1.7 }}
+                      sx={{ lineHeight: 1.6 }}
                     >
                       {feature.description}
                     </Typography>
                   </CardContent>
                 </Card>
-              </Grid>
-            );
-          })}
-        </Grid>
+              );
+            })}
+          </Box>
+
+          {/* Center Column - Phone Mockup */}
+          <Box 
+            sx={{ 
+              flex: '0 0 auto',
+              width: { xs: '100%', md: '320px' }
+            }}
+          >
+          <img
+            src={appScreen}
+            alt="App Screen"
+            style={{ width: '100%', height: 'auto', borderRadius: 40, boxShadow: '0 20px 60px rgba(0,0,0,0.15)' }}
+          />
+            {/* <Box
+              component="img"
+              src="https://dummyimage.com/400x800/1F2937/ffffff&text=Phone+Mockup"
+              alt="Mobile app preview"
+              sx={{
+                width: '100%',
+                height: 'auto',
+                display: 'block',
+                borderRadius: 3,
+                boxShadow: '0 20px 60px rgba(0,0,0,0.15)'
+              }}
+            />
+           */}
+           </Box>
+
+          {/* Right Column - 2 Cards */}
+          <Box 
+            sx={{ 
+              flex: 1,
+              display: 'flex',
+              flexDirection: 'column',
+              gap: 3
+            }}
+          >
+            {rightFeatures.map((feature, index) => {
+              const Icon = feature.icon;
+              return (
+                <Card 
+                  key={index}
+                  elevation={0}
+                  sx={{ 
+                    backgroundColor: '#FAFAFA',
+                    border: '1px solid #E5E7EB',
+                    borderRadius: 4,
+                    transition: 'all 0.3s',
+                    '&:hover': {
+                      transform: 'translateY(-4px)',
+                      boxShadow: '0 10px 30px rgba(0,0,0,0.08)',
+                      borderColor: '#D1D5DB'
+                    }
+                  }}
+                >
+                  <CardContent sx={{ p: 3 }}>
+                    <Box
+                      sx={{
+                        width: 56,
+                        height: 56,
+                        borderRadius: '50%',
+                        backgroundColor: feature.iconBg,
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        mb: 2
+                      }}
+                    >
+                      <Icon size={28} style={{ color: feature.iconColor }} />
+                    </Box>
+                    
+                    <Typography 
+                      variant="h6" 
+                      component="h3" 
+                      sx={{ fontWeight: 600, mb: 1 }}
+                    >
+                      {feature.title}
+                    </Typography>
+                    
+                    <Typography 
+                      variant="body2" 
+                      color="text.secondary"
+                      sx={{ lineHeight: 1.6 }}
+                    >
+                      {feature.description}
+                    </Typography>
+                  </CardContent>
+                </Card>
+              );
+            })}
+          </Box>
+        </Box>
       </Container>
     </Box>
   );

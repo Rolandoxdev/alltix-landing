@@ -1,4 +1,6 @@
 import { Container, Box, Typography, Stack, Chip } from '@mui/material';
+import { TicketCheck, LogIn } from 'lucide-react';
+import heroImageNew from '../assets/alltixHeroSectionNew.png';
 import Button from './atoms/Button';
 
 export default function Hero() {
@@ -16,10 +18,16 @@ export default function Hero() {
       <Container maxWidth="lg">
         <Box sx={{ textAlign: 'center', mb: 6 }}>
           <Chip 
-            label="WELLCOME TO ALLTIX"
+            icon={
+              <TicketCheck
+                size={16} 
+                style={{ color: '#059669' }} 
+              />
+            }
+            label="ALLTIX | THE FUTURE OF LARGE-SCALE EVENTS"
             sx={{
-              backgroundColor: '#FFF0E6',
-              color: 'primary.main',
+              backgroundColor: '#D1FAE5',
+              color: '#059669',
               fontWeight: 600,
               fontSize: '0.75rem',
               letterSpacing: '0.05em',
@@ -27,7 +35,10 @@ export default function Hero() {
               mb: 3,
               border: 'none',
               '& .MuiChip-label': {
-                px: 2
+                px: 1.5
+              },
+              '& .MuiChip-icon': {
+                ml: 1.5
               }
             }}
           />
@@ -80,13 +91,16 @@ export default function Hero() {
             justifyContent="center"
             sx={{ mb: 6 }}
           >
-            <Button 
-              variant="primary" 
-              size="medium"
-              href="#early-access"
-            >
-              Get Early Access
-            </Button>
+          <Button
+            variant="primary"
+            startIcon={<LogIn />}
+            size="medium"
+            href="https://app.alltix.co/auth"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Login
+          </Button>
             <Button 
               variant="secondary" 
               size="medium"
@@ -103,13 +117,13 @@ export default function Hero() {
               mx: 'auto',
               borderRadius: '24px',
               overflow: 'hidden',
-              boxShadow: '0 20px 60px rgba(0, 0, 0, 0.15)',
+              //boxShadow: '0 20px 60px rgba(0, 0, 0, 0.15)',
               mt: 6
             }}
           >
             <Box
               component="img"
-              src="https://dummyimage.com/1200x600/B0BEC5/ffffff&text=Large+Scale+Event+Photo"
+              src={heroImageNew}
               alt="Large scale event venue"
               sx={{
                 width: '100%',

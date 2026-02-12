@@ -1,4 +1,5 @@
 import { Container, Box, Typography } from '@mui/material';
+import { Mail } from 'lucide-react';
 import Button from './atoms/Button';
 
 export default function CTA() {
@@ -6,7 +7,7 @@ export default function CTA() {
     <Box 
       sx={{ 
         py: 12,
-        background: 'linear-gradient(135deg, #FF6B00 0%, #E56000 100%)',
+        background: '#fff0',
         color: 'white'
       }}
     >
@@ -16,37 +17,25 @@ export default function CTA() {
             variant="h3" 
             component="h2" 
             gutterBottom
-            sx={{ fontWeight: 700, mb: 3, color: 'white' }}
+            sx={{ fontWeight: 700, mb: 4 }}
           >
-            Ready to explore a better way to sell tickets?
+                      Ready to explore{' '}
+            <Box 
+              component="span" 
+              sx={{ color: '#FF6B00' }}
+            >
+              a better way
+            </Box>
+             {' '}to sell tickets?
           </Typography>
           
-          <Typography 
-            variant="h6" 
-            sx={{ mb: 4, opacity: 0.95, lineHeight: 1.6, color: 'white' }}
-          >
-            Join us in reimagining what seat-based ticketing can be
-          </Typography>
-
           <Button 
             variant="primary"
             size="large"
-            href="#early-access"
-            sx={{ 
-              backgroundColor: 'white',
-              color: '#FF6B00',
-              '&:hover': {
-                backgroundColor: '#F5F5F5',
-                color: '#E56000',
-                transform: 'translateY(-2px)',
-                boxShadow: '0 8px 20px rgba(0, 0, 0, 0.15)',
-              },
-              '&:active': {
-                backgroundColor: '#EEEEEE',
-              }
-            }}
+            startIcon={<Mail size={20} />}
+            href="mailto:hello@alltix.co"
           >
-            Request early access
+            Get in touch 
           </Button>
         </Box>
       </Container>

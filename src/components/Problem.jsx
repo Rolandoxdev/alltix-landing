@@ -1,74 +1,123 @@
-import { Container, Box, Typography, Grid, Card, CardContent } from '@mui/material';
-import ErrorOutlineIcon from '@mui/icons-material/ErrorOutline';
+import { Container, Box, Typography, Card, CardContent, Chip } from '@mui/material';
+import { Settings, X, RefreshCw, BarChart3, Rocket } from 'lucide-react';
 
 const problems = [
   {
-    title: 'Rigid ticketing systems',
-    description: 'Legacy platforms force you to work within their constraints, limiting customization and control over your event experience.'
+    icon: Settings,
+    title: 'Rigid Systems',
+    description: 'Hard-coded seating charts that take weeks to modify or update for new tours.'
   },
   {
-    title: 'Poor seat selection experience',
-    description: 'Attendees struggle with unclear maps, confusing interfaces, and limited visibility into available seating options.'
+    icon: X,
+    title: 'Poor Seat Choice',
+    description: 'Frustrating interfaces that make selecting a specific seat feel like a chore.'
   },
   {
-    title: 'Difficult group and section management',
-    description: 'Managing group sales, reserved sections, and affinity seating becomes a logistical nightmare with most platforms.'
+    icon: RefreshCw,
+    title: 'Sync Delays',
+    description: 'Double bookings and lag times during high-traffic on-sale moments.'
   },
   {
-    title: 'Limited visibility into event data',
-    description: 'Without clear insights into sales patterns and seating distribution, making informed decisions is challenging.'
+    icon: BarChart3,
+    title: 'Blind Spots',
+    description: 'Lack of real-time data on attendee movement and seating density.'
   }
 ];
 
 export default function Problem() {
   return (
-    <Box sx={{ py: 10, backgroundColor: '#F5F5F5' }}>
+    <Box sx={{ py: 10, backgroundColor: '#FAFAFA' }}>
       <Container maxWidth="lg">
         <Box sx={{ textAlign: 'center', mb: 6 }}>
+          <Chip 
+            icon={
+              <Rocket 
+                size={16} 
+                style={{ color: '#0369A1' }} 
+              />
+            }
+            label="THE CHALLENGE"
+            sx={{
+              backgroundColor: '#E0F2FE',
+              color: '#0369A1',
+              fontWeight: 600,
+              fontSize: '0.75rem',
+              letterSpacing: '0.05em',
+              height: '28px',
+              mb: 3,
+              border: 'none',
+              '& .MuiChip-label': {
+                px: 1.5
+              },
+              '& .MuiChip-icon': {
+                ml: 1.5
+              }
+            }}
+          />
           <Typography 
             variant="h3" 
-            component="h2" 
+            component="h3" 
             gutterBottom
             sx={{ fontWeight: 700, mb: 2 }}
           >
-            The challenges event organizers face
+            Why traditional ticketing fails
           </Typography>
           <Typography 
             variant="h6" 
             color="text.secondary"
-            sx={{ maxWidth: '700px', mx: 'auto' }}
+            sx={{ maxWidth: '700px', mx: 'auto', fontWeight: 400 }}
           >
-            Traditional ticketing platforms weren't built for complex, seat-based events at scale
+            Most ticketing platforms weren't built for the modern venue scale.
+            {/* Most ticketing platforms weren't built for complex, seat-based events at scale. */}
           </Typography>
         </Box>
 
-        <Grid container spacing={4}>
-          {problems.map((problem, index) => (
-            <Grid item xs={12} sm={6} md={3} key={index}>
+        <Box 
+          sx={{ 
+            display: 'flex', 
+            gap: 3, 
+            justifyContent: 'center',
+            flexWrap: 'wrap'
+          }}
+        >
+          {problems.map((problem, index) => {
+            const Icon = problem.icon;
+            return (
               <Card 
-                elevation={2}
+                key={index}
+                elevation={0}
                 sx={{ 
-                  height: '100%',
-                  transition: 'transform 0.2s, box-shadow 0.2s',
+                  flex: { 
+                    xs: '1 1 100%',      // Mobile: full width
+                    sm: '1 1 calc(50% - 12px)',  // Tablet: 2 columns
+                    md: '1 1 calc(25% - 18px)'   // Desktop: 4 columns
+                  },
+                  minWidth: { xs: '90%', sm: '280px', md: '240px' },
+                  maxWidth: { xs: '90%', sm: '400px', md: '300px' },
+                  backgroundColor: '#FFFFFF',
+                  border: '1px solid',
+                  borderColor: '#E0E0E0',
+                  borderRadius: '16px',
+                  transition: 'all 0.2s ease-in-out',
                   '&:hover': {
                     transform: 'translateY(-4px)',
-                    boxShadow: 4
+                    boxShadow: '0 8px 24px rgba(0, 0, 0, 0.08)',
+                    borderColor: '#FF6B00'
                   }
                 }}
               >
-                <CardContent sx={{ p: 3 }}>
-                  <ErrorOutlineIcon 
-                    sx={{ 
-                      fontSize: 48, 
-                      color: '#FF6B00', 
-                      mb: 2 
-                    }} 
+                <CardContent sx={{ p: 4 }}>
+                  <Icon 
+                    size={48}
+                    color="#FF6B00"
+                    strokeWidth={1.5}
+                    style={{ marginBottom: '16px' }}
                   />
                   <Typography 
                     variant="h6" 
                     component="h3" 
                     gutterBottom
-                    sx={{ fontWeight: 600, mb: 1.5 }}
+                    sx={{ fontWeight: 600, mb: 1.5, color: '#1A1A1A' }}
                   >
                     {problem.title}
                   </Typography>
@@ -81,9 +130,9 @@ export default function Problem() {
                   </Typography>
                 </CardContent>
               </Card>
-            </Grid>
-          ))}
-        </Grid>
+            );
+          })}
+        </Box>
       </Container>
     </Box>
   );
